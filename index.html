@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>母亲节快乐 💐</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600&display=swap');
+
+:root {
+  --rose:    #e8617a;
+  --rose2:   #f29aab;
+  --blush:   #fdf0f2;
+  --petal:   #fce4ec;
+  --gold:    #c9956a;
+  --ink:     #3a2630;
+  --soft:    #7a5060;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--blush);
+  color: var(--ink);
+  font-family: 'Noto Serif SC', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Petal rain ── */
+.petals { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.petal {
+  position:absolute; top:-40px;
+  font-size:18px; opacity:0;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0%   { transform: translateY(-40px) rotate(0deg) scale(0.8); opacity:0.8; }
+  80%  { opacity:0.6; }
+  100% { transform: translateY(110vh) rotate(720deg) scale(1.1); opacity:0; }
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative; z-index:1;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(232,97,122,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(242,154,171,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(201,149,106,0.1) 0%, transparent 60%);
+}
+
+.badge {
+  font-size: 13px; letter-spacing: 4px;
+  color: var(--gold); text-transform: uppercase;
+  border: 1px solid rgba(201,149,106,0.4);
+  padding: 6px 20px; border-radius: 30px;
+  margin-bottom: 32px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.flowers {
+  font-size: clamp(52px, 12vw, 90px);
+  line-height: 1;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
+  filter: drop-shadow(0 4px 20px rgba(232,97,122,0.3));
+}
+
+h1 {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: clamp(42px, 10vw, 86px);
+  color: var(--rose);
+  line-height: 1.2;
+  text-shadow:
+    2px 2px 0 rgba(232,97,122,0.15),
+    0 4px 24px rgba(232,97,122,0.25);
+  opacity: 0; animation: fadeUp 0.9s ease 0.6s forwards;
+  margin-bottom: 12px;
+}
+
+.sub {
+  font-size: clamp(16px, 3vw, 22px);
+  color: var(--soft); font-weight: 300;
+  letter-spacing: 3px;
+  opacity: 0; animation: fadeUp 0.9s ease 0.85s forwards;
+  margin-bottom: 48px;
+}
+
+.scroll-hint {
+  font-size: 12px; letter-spacing: 2px;
+  color: var(--rose2);
+  opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards;
+  display: flex; flex-direction: column; align-items: center; gap:6px;
+}
+.arrow { animation: bounce 1.6s ease-in-out infinite; font-size:20px; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ── Wishes row ── */
+.wishes-section {
+  position: relative; z-index:1;
+  padding: 60px 24px 100px;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+
+.wishes-title {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: clamp(26px, 5vw, 40px);
+  color: var(--rose); text-align: center;
+  margin-bottom: 8px;
+}
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px; width: 100%; max-width: 900px;
+}
+
+@media (max-width: 700px) {
+  .wishes-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.wish-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(58,38,48,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-top: 3px solid var(--rose2);
+}
+.wish-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(232,97,122,0.15); }
+
+.wish-icon { font-size: 36px; margin-bottom: 12px; }
+.wish-text {
+  font-size: 14px; line-height: 1.8; color: var(--soft);
+}
+
+/* ── Footer ── */
+footer {
+  position: relative; z-index:1;
+  text-align: center; padding: 40px 24px 60px;
+  font-size: 13px; color: var(--rose2); letter-spacing: 2px;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── Confetti canvas ── */
+#confetti { position:fixed; inset:0; pointer-events:none; z-index:100; }
+
+/* ── Click effect canvas ── */
+#clickfx { position:fixed; inset:0; pointer-events:none; z-index:99; }
+
+/* ── Music button ── */
+#musicBtn {
+  position: fixed; bottom: 28px; right: 28px; z-index: 200;
+  width: 52px; height: 52px; border-radius: 50%;
+  background: rgba(255,255,255,0.92);
+  border: 2px solid var(--rose2);
+  box-shadow: 0 4px 20px rgba(232,97,122,0.25);
+  cursor: pointer; font-size: 22px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+  backdrop-filter: blur(8px);
+}
+#musicBtn:hover { transform: scale(1.12); box-shadow: 0 6px 28px rgba(232,97,122,0.4); }
+#musicBtn.playing { animation: musicPulse 1.8s ease-in-out infinite; border-color: var(--rose); }
+@keyframes musicPulse {
+  0%,100% { box-shadow: 0 4px 20px rgba(232,97,122,0.25); }
+  50%     { box-shadow: 0 4px 28px rgba(232,97,122,0.55), 0 0 0 8px rgba(232,97,122,0.08); }
+}
+/* ── Music prompt tip ── */
+#musicPrompt {
+  position: fixed; bottom: 90px; right: 20px; z-index: 200;
+  background: rgba(255,255,255,0.95); backdrop-filter: blur(8px);
+  border: 1px solid var(--rose2); border-radius: 12px;
+  padding: 10px 16px; font-size: 12px; color: var(--soft);
+  letter-spacing: 1px; white-space: nowrap;
+  animation: promptFade 4s ease 1s forwards;
+}
+@keyframes promptFade { 0%{opacity:0} 15%{opacity:1} 75%{opacity:1} 100%{opacity:0;pointer-events:none} }
+
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+<canvas id="clickfx"></canvas>
+<div class="petals" id="petals"></div>
+
+<!-- Music toggle -->
+<button id="musicBtn" title="播放/暂停音乐">🎵</button>
+<div id="musicPrompt">🎵 点击右下角播放音乐</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="badge">Mother's Day · 2026</div>
+  <div class="flowers">🌸🌷🌹</div>
+  <h1>母亲节快乐</h1>
+  <p class="sub">感谢您，我最亲爱的妈妈</p>
+  <div class="scroll-hint">
+    <span>往下看</span>
+    <span class="arrow">↓</span>
+  </div>
+</section>
+
+<!-- Wishes -->
+<section class="wishes-section">
+  <div class="wishes-title reveal">我的祝愿 🌸</div>
+  <div class="wishes-grid">
+    <div class="wish-card reveal">
+      <div class="wish-icon">🌺</div>
+      <div class="wish-text">愿您每天都像花儿一样盛开，心情愉快，笑容满面</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🍀</div>
+      <div class="wish-text">愿好运时常眷顾您，平安与健康永远相伴</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">✨</div>
+      <div class="wish-text">愿您的每一天都充满阳光，生活幸福美满</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🫶</div>
+      <div class="wish-text">无论我在哪里，对您的爱与感恩从未改变</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🌙</div>
+      <div class="wish-text">愿您夜夜安眠，无忧无虑，睡梦里都是美好的事</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🍵</div>
+      <div class="wish-text">愿您每一杯茶都温热，每一顿饭都香甜，生活细水长流</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🌈</div>
+      <div class="wish-text">愿风雨之后都有彩虹，愿您的余生从容而灿烂</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">💐</div>
+      <div class="wish-text">感谢您给了我生命，也给了我爱，您是我最珍贵的人</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  以爱相伴 · 感恩有您 · Happy Mother's Day 🌷
+</footer>
+
+<script>
+// ════════════════════════════════════════
+// 1. PETAL RAIN
+// ════════════════════════════════════════
+const PETALS = ['🌸','🌷','🌹','🌺','✿','❀'];
+const petalContainer = document.getElementById('petals');
+for (let i=0; i<22; i++) {
+  const el = document.createElement('div');
+  el.className = 'petal';
+  el.textContent = PETALS[Math.floor(Math.random()*PETALS.length)];
+  el.style.left = Math.random()*100 + 'vw';
+  el.style.fontSize = (14+Math.random()*14) + 'px';
+  el.style.animationDuration = (6+Math.random()*10) + 's';
+  el.style.animationDelay = (Math.random()*12) + 's';
+  el.style.opacity = 0;
+  petalContainer.appendChild(el);
+}
+
+// ════════════════════════════════════════
+// 2. SCROLL REVEAL
+// ════════════════════════════════════════
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach((el,i) => {
+  el.style.transitionDelay = (i % 4 * 0.12) + 's';
+  observer.observe(el);
+});
+
+// ════════════════════════════════════════
+// 3. CONFETTI
+// ════════════════════════════════════════
+const ccanvas = document.getElementById('confetti');
+const cctx = ccanvas.getContext('2d');
+let confettiPieces = [], confettiRunning = false;
+function resizeConfetti() { ccanvas.width = window.innerWidth; ccanvas.height = window.innerHeight; }
+resizeConfetti();
+window.addEventListener('resize', resizeConfetti);
+const CCOLORS = ['#e8617a','#f29aab','#c9956a','#ffd6e0','#ffb3c1','#ff85a1','#ffd700'];
+const CEMOJIS = ['🌸','💖','🌷','✨','💕'];
+function animateConfetti() {
+  cctx.clearRect(0,0,ccanvas.width,ccanvas.height);
+  confettiPieces = confettiPieces.filter(p => p.life > 0 && p.y < ccanvas.height+60);
+  confettiPieces.forEach(p => {
+    p.x+=p.vx; p.y+=p.vy; p.vy+=0.08; p.rot+=p.rotV; p.life-=0.005;
+    cctx.save(); cctx.globalAlpha=p.life;
+    cctx.translate(p.x,p.y); cctx.rotate(p.rot*Math.PI/180);
+    if (p.emoji) {
+      cctx.font='18px serif'; cctx.textAlign='center'; cctx.textBaseline='middle';
+      cctx.fillText(p.emoji,0,0);
+    } else { cctx.fillStyle=p.color; cctx.fillRect(-p.w/2,-p.h/2,p.w,p.h); }
+    cctx.restore();
+  });
+  if (confettiPieces.length>0) requestAnimationFrame(animateConfetti);
+  else { confettiRunning=false; cctx.clearRect(0,0,ccanvas.width,ccanvas.height); }
+}
+
+// ════════════════════════════════════════
+// 4. CLICK SPECIAL EFFECTS
+// ════════════════════════════════════════
+const fxCanvas = document.getElementById('clickfx');
+const fxCtx = fxCanvas.getContext('2d');
+let fxParticles = [], fxRunning = false;
+function resizeFx() { fxCanvas.width = window.innerWidth; fxCanvas.height = window.innerHeight; }
+resizeFx();
+window.addEventListener('resize', resizeFx);
+
+const CLICK_SYMBOLS = ['🌸','💖','🌷','💕','✨','🌺','❀'];
+const CLICK_COLORS  = ['#e8617a','#f29aab','#ff85a1','#ffd700','#c9956a','#ffb3c1'];
+
+function spawnClickFx(x, y) {
+  // Ring burst
+  for (let i = 0; i < 14; i++) {
+    const angle = (Math.PI * 2 / 14) * i;
+    const spd = 2.5 + Math.random() * 3;
+    fxParticles.push({
+      type: 'dot',
+      x, y,
+      vx: Math.cos(angle) * spd,
+      vy: Math.sin(angle) * spd,
+      color: CLICK_COLORS[Math.floor(Math.random()*CLICK_COLORS.length)],
+      r: 3 + Math.random() * 3,
+      life: 1, decay: 0.025 + Math.random()*0.015
+    });
+  }
+  // Emoji floaters
+  for (let i = 0; i < 5; i++) {
+    fxParticles.push({
+      type: 'emoji',
+      x: x + (Math.random()-0.5)*30,
+      y,
+      vx: (Math.random()-0.5)*1.8,
+      vy: -(1.5 + Math.random()*2.5),
+      symbol: CLICK_SYMBOLS[Math.floor(Math.random()*CLICK_SYMBOLS.length)],
+      size: 16 + Math.random()*14,
+      life: 1, decay: 0.018 + Math.random()*0.01,
+      rot: (Math.random()-0.5)*0.2,
+      rotV: (Math.random()-0.5)*0.06
+    });
+  }
+  // Expanding ring
+  fxParticles.push({
+    type: 'ring',
+    x, y, r: 4, maxR: 55 + Math.random()*20,
+    life: 1, decay: 0.032,
+    color: CLICK_COLORS[Math.floor(Math.random()*CLICK_COLORS.length)]
+  });
+
+  if (!fxRunning) { fxRunning = true; animateFx(); }
+}
+
+function animateFx() {
+  fxCtx.clearRect(0, 0, fxCanvas.width, fxCanvas.height);
+  fxParticles = fxParticles.filter(p => p.life > 0);
+
+  fxParticles.forEach(p => {
+    fxCtx.save();
+    fxCtx.globalAlpha = p.life;
+
+    if (p.type === 'dot') {
+      p.x += p.vx; p.y += p.vy;
+      p.vy += 0.12; p.life -= p.decay;
+      fxCtx.fillStyle = p.color;
+      fxCtx.shadowBlur = 6; fxCtx.shadowColor = p.color;
+      fxCtx.beginPath(); fxCtx.arc(p.x, p.y, p.r * p.life, 0, Math.PI*2); fxCtx.fill();
+
+    } else if (p.type === 'emoji') {
+      p.x += p.vx; p.y += p.vy;
+      p.vy += 0.06; p.life -= p.decay;
+      p.rot += p.rotV;
+      fxCtx.translate(p.x, p.y); fxCtx.rotate(p.rot);
+      fxCtx.font = p.size + 'px serif';
+      fxCtx.textAlign = 'center'; fxCtx.textBaseline = 'middle';
+      fxCtx.fillText(p.symbol, 0, 0);
+
+    } else if (p.type === 'ring') {
+      p.r += (p.maxR - p.r) * 0.12; p.life -= p.decay;
+      fxCtx.strokeStyle = p.color;
+      fxCtx.lineWidth = 2 * p.life;
+      fxCtx.shadowBlur = 10; fxCtx.shadowColor = p.color;
+      fxCtx.beginPath(); fxCtx.arc(p.x, p.y, p.r, 0, Math.PI*2); fxCtx.stroke();
+    }
+    fxCtx.restore();
+  });
+
+  if (fxParticles.length > 0) requestAnimationFrame(animateFx);
+  else { fxRunning = false; fxCtx.clearRect(0, 0, fxCanvas.width, fxCanvas.height); }
+}
+
+document.addEventListener('click', e => {
+  // Don't trigger on music button
+  if (e.target.id === 'musicBtn') return;
+  spawnClickFx(e.clientX, e.clientY);
+});
+document.addEventListener('touchstart', e => {
+  if (e.target.id === 'musicBtn') return;
+  const t = e.touches[0];
+  spawnClickFx(t.clientX, t.clientY);
+}, { passive: true });
+
+// ════════════════════════════════════════
+// 5. BACKGROUND MUSIC (Web Audio API)
+//    Gentle pentatonic lullaby melody
+// ════════════════════════════════════════
+let audioCtx = null, musicPlaying = false;
+let masterGain, reverbNode, scheduledNodes = [];
+const musicBtn = document.getElementById('musicBtn');
+
+// Pentatonic scale notes (Hz) — soft, warm, looping melody
+const NOTES = {
+  C4:261.63, D4:293.66, E4:329.63, G4:392.00, A4:440.00,
+  C5:523.25, D5:587.33, E5:659.25, G5:783.99, A5:880.00,
+  C6:1046.50
+};
+
+// Melody: [note, duration(s), volume]
+const MELODY = [
+  [NOTES.E5,0.5,0.6],[NOTES.D5,0.5,0.5],[NOTES.C5,0.5,0.55],
+  [NOTES.E5,0.5,0.6],[NOTES.G5,1.0,0.65],[NOTES.G5,0.25,0.3],
+  [NOTES.A5,0.5,0.55],[NOTES.G5,0.5,0.5],[NOTES.E5,0.5,0.55],
+  [NOTES.D5,0.5,0.5],[NOTES.C5,1.0,0.6],[NOTES.C5,0.25,0.25],
+  [NOTES.D5,0.5,0.5],[NOTES.E5,0.5,0.55],[NOTES.G5,0.5,0.6],
+  [NOTES.E5,0.5,0.55],[NOTES.D5,0.5,0.5],[NOTES.C5,1.5,0.65],
+  [NOTES.G4,0.5,0.4],[NOTES.A4,0.5,0.45],[NOTES.C5,0.5,0.5],
+  [NOTES.D5,0.5,0.5],[NOTES.E5,1.0,0.6],[NOTES.E5,0.25,0.25],
+  [NOTES.C5,0.5,0.55],[NOTES.D5,0.5,0.5],[NOTES.E5,0.5,0.55],
+  [NOTES.G5,0.5,0.6],[NOTES.A5,0.5,0.55],[NOTES.G5,0.5,0.5],
+  [NOTES.E5,0.5,0.55],[NOTES.C5,2.0,0.65],
+];
+
+// Bass accompaniment pattern
+const BASS = [
+  [NOTES.C4,2,0.25],[NOTES.G4,2,0.2],[NOTES.A4,2,0.22],[NOTES.E4,2,0.2],
+  [NOTES.C4,2,0.25],[NOTES.G4,2,0.2],[NOTES.C4,4,0.22],
+];
+
+function createReverb(ctx) {
+  const convolver = ctx.createConvolver();
+  const rate = ctx.sampleRate;
+  const len = rate * 2.5;
+  const buf = ctx.createBuffer(2, len, rate);
+  for (let c=0; c<2; c++) {
+    const d = buf.getChannelData(c);
+    for (let i=0; i<len; i++) d[i] = (Math.random()*2-1) * Math.pow(1-i/len, 2.5);
+  }
+  convolver.buffer = buf;
+  return convolver;
+}
+
+function playNote(freq, startTime, duration, vol, type='sine') {
+  if (!audioCtx || !musicPlaying) return;
+  const osc = audioCtx.createOscillator();
+  const gain = audioCtx.createGain();
+  osc.connect(gain);
+  gain.connect(reverbNode);
+  gain.connect(masterGain);
+
+  osc.type = type;
+  osc.frequency.setValueAtTime(freq, startTime);
+  // Very slight vibrato for warmth
+  if (type === 'sine') {
+    const lfo = audioCtx.createOscillator();
+    const lfoGain = audioCtx.createGain();
+    lfo.frequency.value = 5;
+    lfoGain.gain.value = 2;
+    lfo.connect(lfoGain);
+    lfoGain.connect(osc.frequency);
+    lfo.start(startTime);
+    lfo.stop(startTime + duration + 0.1);
+    scheduledNodes.push(lfo);
+  }
+
+  gain.gain.setValueAtTime(0, startTime);
+  gain.gain.linearRampToValueAtTime(vol * 0.22, startTime + 0.04);
+  gain.gain.exponentialRampToValueAtTime(vol * 0.12, startTime + duration * 0.5);
+  gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration + 0.3);
+
+  osc.start(startTime);
+  osc.stop(startTime + duration + 0.4);
+  scheduledNodes.push(osc);
+}
+
+let loopTimeout = null;
+function scheduleMelody(startTime) {
+  if (!musicPlaying) return;
+  let t = startTime;
+
+  // Play melody
+  MELODY.forEach(([freq, dur, vol]) => {
+    playNote(freq, t, dur, vol, 'sine');
+    t += dur * 0.92;
+  });
+
+  // Play bass underneath (reset time)
+  let bt = startTime;
+  BASS.forEach(([freq, dur, vol]) => {
+    playNote(freq, bt, dur, vol, 'triangle');
+    bt += dur;
+  });
+
+  // Schedule next loop slightly before current ends
+  const totalDuration = MELODY.reduce((s,[,d])=>s+d*0.92, 0);
+  loopTimeout = setTimeout(() => {
+    if (musicPlaying) scheduleMelody(audioCtx.currentTime + 0.1);
+  }, (totalDuration - 0.5) * 1000);
+}
+
+function startMusic() {
+  if (!audioCtx) {
+    audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = 0.55;
+    masterGain.connect(audioCtx.destination);
+    reverbNode = createReverb(audioCtx);
+    reverbNode.connect(masterGain);
+  }
+  if (audioCtx.state === 'suspended') audioCtx.resume();
+  musicPlaying = true;
+  musicBtn.textContent = '🔊';
+  musicBtn.classList.add('playing');
+  scheduleMelody(audioCtx.currentTime + 0.1);
+}
+
+function stopMusic() {
+  musicPlaying = false;
+  clearTimeout(loopTimeout);
+  scheduledNodes.forEach(n => { try { n.stop(); } catch(e){} });
+  scheduledNodes = [];
+  // Fade out master gain
+  if (masterGain) {
+    masterGain.gain.setValueAtTime(masterGain.gain.value, audioCtx.currentTime);
+    masterGain.gain.linearRampToValueAtTime(0, audioCtx.currentTime + 0.5);
+    setTimeout(()=>{ if(!musicPlaying && masterGain) masterGain.gain.value=0.55; }, 600);
+  }
+  musicBtn.textContent = '🎵';
+  musicBtn.classList.remove('playing');
+}
+
+musicBtn.addEventListener('click', () => {
+  if (musicPlaying) stopMusic(); else startMusic();
+});
+</script>
+</body>
+</html>
