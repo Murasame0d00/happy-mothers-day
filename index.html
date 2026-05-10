@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>母亲节快乐 💐</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@300;400;600&display=swap');
+
+:root {
+  --rose:    #e8617a;
+  --rose2:   #f29aab;
+  --blush:   #fdf0f2;
+  --petal:   #fce4ec;
+  --gold:    #c9956a;
+  --ink:     #3a2630;
+  --soft:    #7a5060;
+}
+
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--blush);
+  color: var(--ink);
+  font-family: 'Noto Serif SC', serif;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Petal rain ── */
+.petals { position:fixed; inset:0; pointer-events:none; z-index:0; overflow:hidden; }
+.petal {
+  position:absolute; top:-40px;
+  font-size:18px; opacity:0;
+  animation: fall linear infinite;
+}
+@keyframes fall {
+  0%   { transform: translateY(-40px) rotate(0deg) scale(0.8); opacity:0.8; }
+  80%  { opacity:0.6; }
+  100% { transform: translateY(110vh) rotate(720deg) scale(1.1); opacity:0; }
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative; z-index:1;
+  min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center;
+  padding: 40px 24px;
+  background:
+    radial-gradient(ellipse 70% 60% at 50% 40%, rgba(232,97,122,0.12) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 40% at 20% 80%, rgba(242,154,171,0.15) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 80% 10%, rgba(201,149,106,0.1) 0%, transparent 60%);
+}
+
+.badge {
+  font-size: 13px; letter-spacing: 4px;
+  color: var(--gold); text-transform: uppercase;
+  border: 1px solid rgba(201,149,106,0.4);
+  padding: 6px 20px; border-radius: 30px;
+  margin-bottom: 32px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.2s forwards;
+}
+
+.flowers {
+  font-size: clamp(52px, 12vw, 90px);
+  line-height: 1;
+  margin-bottom: 28px;
+  opacity: 0; animation: fadeUp 0.8s ease 0.4s forwards;
+  filter: drop-shadow(0 4px 20px rgba(232,97,122,0.3));
+}
+
+h1 {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: clamp(42px, 10vw, 86px);
+  color: var(--rose);
+  line-height: 1.2;
+  text-shadow:
+    2px 2px 0 rgba(232,97,122,0.15),
+    0 4px 24px rgba(232,97,122,0.25);
+  opacity: 0; animation: fadeUp 0.9s ease 0.6s forwards;
+  margin-bottom: 12px;
+}
+
+.sub {
+  font-size: clamp(16px, 3vw, 22px);
+  color: var(--soft); font-weight: 300;
+  letter-spacing: 3px;
+  opacity: 0; animation: fadeUp 0.9s ease 0.85s forwards;
+  margin-bottom: 48px;
+}
+
+.scroll-hint {
+  font-size: 12px; letter-spacing: 2px;
+  color: var(--rose2);
+  opacity: 0; animation: fadeUp 0.8s ease 1.2s forwards;
+  display: flex; flex-direction: column; align-items: center; gap:6px;
+}
+.arrow { animation: bounce 1.6s ease-in-out infinite; font-size:20px; }
+@keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(6px)} }
+
+/* ── Wishes row ── */
+.wishes-section {
+  position: relative; z-index:1;
+  padding: 60px 24px 100px;
+  display: flex; flex-direction: column; align-items: center; gap: 20px;
+}
+
+.wishes-title {
+  font-family: 'Ma Shan Zheng', cursive;
+  font-size: clamp(26px, 5vw, 40px);
+  color: var(--rose); text-align: center;
+  margin-bottom: 8px;
+}
+
+.wishes-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, auto);
+  gap: 16px; width: 100%; max-width: 900px;
+}
+
+@media (max-width: 700px) {
+  .wishes-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+.wish-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(58,38,48,0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  border-top: 3px solid var(--rose2);
+}
+.wish-card:hover { transform: translateY(-6px); box-shadow: 0 12px 32px rgba(232,97,122,0.15); }
+
+.wish-icon { font-size: 36px; margin-bottom: 12px; }
+.wish-text {
+  font-size: 14px; line-height: 1.8; color: var(--soft);
+}
+
+/* ── Footer ── */
+footer {
+  position: relative; z-index:1;
+  text-align: center; padding: 40px 24px 60px;
+  font-size: 13px; color: var(--rose2); letter-spacing: 2px;
+}
+
+/* ── Animations ── */
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(24px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+.reveal {
+  opacity: 0; transform: translateY(30px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity:1; transform:translateY(0); }
+
+/* ── Confetti canvas ── */
+#confetti { position:fixed; inset:0; pointer-events:none; z-index:100; }
+
+</style>
+</head>
+<body>
+
+<canvas id="confetti"></canvas>
+<div class="petals" id="petals"></div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="badge">Mother's Day · 2025</div>
+  <div class="flowers">🌸🌷🌹</div>
+  <h1>母亲节快乐</h1>
+  <p class="sub">感谢您，我最亲爱的妈妈</p>
+  <div class="scroll-hint">
+    <span>往下看</span>
+    <span class="arrow">↓</span>
+  </div>
+</section>
+
+<!-- Wishes -->
+<section class="wishes-section">
+  <div class="wishes-title reveal">我的祝愿 🌸</div>
+  <div class="wishes-grid">
+    <div class="wish-card reveal">
+      <div class="wish-icon">🌺</div>
+      <div class="wish-text">愿您每天都像花儿一样盛开，心情愉快，笑容满面</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🍀</div>
+      <div class="wish-text">愿好运时常眷顾您，平安与健康永远相伴</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">✨</div>
+      <div class="wish-text">愿您的每一天都充满阳光，生活幸福美满</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🫶</div>
+      <div class="wish-text">无论我在哪里，对您的爱与感恩从未改变</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🌙</div>
+      <div class="wish-text">愿您夜夜安眠，无忧无虑，睡梦里都是美好的事</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🍵</div>
+      <div class="wish-text">愿您每一杯茶都温热，每一顿饭都香甜，生活细水长流</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">🌈</div>
+      <div class="wish-text">愿风雨之后都有彩虹，愿您的余生从容而灿烂</div>
+    </div>
+    <div class="wish-card reveal">
+      <div class="wish-icon">💐</div>
+      <div class="wish-text">感谢您给了我生命，也给了我爱，您是我最珍贵的人</div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  以爱相伴 · 感恩有您 · Happy Mother's Day 🌷
+</footer>
+
+<script>
+// ── Petal rain ──
+const PETALS = ['🌸','🌷','🌹','🌺','✿','❀'];
+const petalContainer = document.getElementById('petals');
+for (let i=0; i<22; i++) {
+  const el = document.createElement('div');
+  el.className = 'petal';
+  el.textContent = PETALS[Math.floor(Math.random()*PETALS.length)];
+  el.style.left = Math.random()*100 + 'vw';
+  el.style.fontSize = (14+Math.random()*14) + 'px';
+  el.style.animationDuration = (6+Math.random()*10) + 's';
+  el.style.animationDelay = (Math.random()*12) + 's';
+  el.style.opacity = 0;
+  petalContainer.appendChild(el);
+}
+
+// ── Scroll reveal ──
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach((el,i) => {
+  el.style.transitionDelay = (i % 4 * 0.12) + 's';
+  observer.observe(el);
+});
+
+// ── Confetti ──
+const ccanvas = document.getElementById('confetti');
+const cctx = ccanvas.getContext('2d');
+let confettiPieces = [];
+let confettiRunning = false;
+
+function resizeConfetti() {
+  ccanvas.width = window.innerWidth;
+  ccanvas.height = window.innerHeight;
+}
+resizeConfetti();
+window.addEventListener('resize', resizeConfetti);
+
+const COLORS = ['#e8617a','#f29aab','#c9956a','#ffd6e0','#ffb3c1','#ff85a1','#ffd700'];
+const EMOJIS = ['🌸','💖','🌷','✨','💕'];
+
+function launchConfetti() {
+  confettiPieces = [];
+  for (let i=0; i<120; i++) {
+    confettiPieces.push({
+      x: Math.random() * ccanvas.width,
+      y: -20 - Math.random() * 200,
+      vx: (Math.random()-0.5)*4,
+      vy: 2 + Math.random()*4,
+      rot: Math.random()*360,
+      rotV: (Math.random()-0.5)*8,
+      color: COLORS[Math.floor(Math.random()*COLORS.length)],
+      emoji: Math.random()<0.25 ? EMOJIS[Math.floor(Math.random()*EMOJIS.length)] : null,
+      w: 8+Math.random()*10,
+      h: 4+Math.random()*6,
+      life: 1,
+    });
+  }
+  if (!confettiRunning) { confettiRunning=true; animateConfetti(); }
+}
+
+function animateConfetti() {
+  cctx.clearRect(0,0,ccanvas.width,ccanvas.height);
+  confettiPieces = confettiPieces.filter(p => p.life > 0 && p.y < ccanvas.height+60);
+  confettiPieces.forEach(p => {
+    p.x += p.vx; p.y += p.vy;
+    p.vy += 0.08;
+    p.rot += p.rotV;
+    p.life -= 0.005;
+    cctx.save();
+    cctx.globalAlpha = p.life;
+    cctx.translate(p.x, p.y);
+    cctx.rotate(p.rot * Math.PI/180);
+    if (p.emoji) {
+      cctx.font = '18px serif';
+      cctx.textAlign='center'; cctx.textBaseline='middle';
+      cctx.fillText(p.emoji, 0, 0);
+    } else {
+      cctx.fillStyle = p.color;
+      cctx.fillRect(-p.w/2, -p.h/2, p.w, p.h);
+    }
+    cctx.restore();
+  });
+  if (confettiPieces.length > 0) requestAnimationFrame(animateConfetti);
+  else { confettiRunning=false; cctx.clearRect(0,0,ccanvas.width,ccanvas.height); }
+}
+</script>
+</body>
+</html>
